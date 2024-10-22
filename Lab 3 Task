@@ -250,3 +250,173 @@ row << ": " << getHighestInRow(array, row) << endl;
 col) << endl; 
  return 0; 
 }
+
+(Question 6)
+
+Write a program that dynamically allocates an array of integers. Read the values from user
+and calculate the sum of odd integers.
+
+#include <iostream> 
+using namespace std; 
+int main() { 
+int size; 
+ 
+ // Input the size of the array 
+ cout << "Enter the number of elements: "; 
+cin >> size; 
+ 
+ // Dynamically allocate memory for the array 
+int* array = new int[size]; 
+ 
+ // Input values for the array 
+ cout << "Enter " << size << " integers:" << endl; 
+ for (int i = 0; i < size; ++i) { 
+ cout << "Element " << (i + 1) << ": "; 
+cin >> array[i]; 
+ } 
+ 
+ // Calculate the sum of odd integers 
+int sumOfOdd = 0; 
+ for (int i = 0; i < size; ++i) { 
+ if (array[i] % 2 != 0) { // Check if the number is odd 
+sumOfOdd += array[i]; 
+ } 
+ } 
+ 
+ // Display the result 
+ cout << "Sum of odd integers: " << sumOfOdd << endl; 
+ 
+ // Free dynamically allocated memory 
+delete[] array; 
+ 
+ return 0; 
+}
+
+(Question 7)
+
+Define a pointer variable. Assign the address of variable to a pointer variable and access the
+value of address variable in the pointer variable.
+
+#include <iostream> 
+using namespace std; 
+int main() { 
+ int value = 42; // Define an integer variable 
+ int* ptr = &value; // Define a pointer variable and assign the address of 'value' 
+to it 
+ // Access and display the value using the pointer cout << 
+"Value of the variable: " << value << endl; cout << "Address 
+of the variable: " << ptr << endl; cout << "Value accessed 
+through pointer: " << *ptr << endl; 
+ return 0; 
+}
+
+(Question 8)
+
+Write a program that asks the user to enter integers as inputs to be stored in the variables 'a'
+and 'b' respectively. There are also two integer pointers named ptrA and ptrB. Assign the
+values of 'a' and 'b' to ptrA and ptrB respectively, and display them.
+
+
+#include <iostream> 
+using namespace std; 
+int main() { 
+ int a, b; // Declare two integer variables 
+ int* ptrA = nullptr; // Declare pointers and initialize to nullptr 
+int* ptrB = nullptr; 
+ // Input values for a and b 
+cout << "Enter value for a: "; 
+cin >> a; 
+ cout << "Enter value for b: "; 
+cin >> b; 
+ // Assign addresses of a and b to pointers 
+ptrA = &a; ptrB = &b; 
+ // Display values using pointers 
+ cout << "Value of a using pointer ptrA: " << *ptrA << endl; 
+cout << "Value of b using pointer ptrB: " << *ptrB << endl; 
+ return 0; 
+}
+
+(Question 9)
+
+Write a program for a calculator using functions.
+Your program must have the following functions:
+a. Menu () telling the user to select from the options
+b. Addition (int a, int b) adding two numbers
+c. Subtraction (int a, int b)
+d. Division (int a, int b)
+e. Multiplication (int a, int b)
+f. Pow (int number, int pow)
+In the main function you will only call the menu () function.
+
+#include <iostream> 
+#include <cmath> // For pow function 
+using namespace std; 
+// Function to display the menu and handle user choice 
+void Menu() { 
+ int choice, a, b; 
+do { 
+ // Display menu options cout 
+<< "\nCalculator Menu:\n"; cout 
+<< "1. Addition\n"; cout << "2. 
+Subtraction\n"; cout << "3. 
+Multiplication\n"; cout << "4. 
+Division\n"; cout << "5. Power\n"; 
+cout << "6. Exit\n"; cout << "Enter 
+your choice (1-6): "; cin >> choice; 
+ // Handle user choice 
+switch (choice) { 
+case 1: 
+ cout << "Enter two integers: "; 
+cin >> a >> b; 
+ cout << "Result: " << Addition(a, b) << endl; 
+break; case 2: 
+ cout << "Enter two integers: "; 
+cin >> a >> b; 
+ cout << "Result: " << Subtraction(a, b) << endl; 
+break; case 3: 
+ cout << "Enter two integers: "; 
+cin >> a >> b; 
+ cout << "Result: " << Multiplication(a, b) << endl; 
+break; case 4: 
+ cout << "Enter two integers (denominator must not be zero): 
+"; cin >> a >> b; if (b != 0) { 
+ cout << "Result: " << Division(a, b) << endl; 
+ } else { 
+ cout << "Error: Division by zero is not allowed.\n"; 
+ } 
+break; 
+case 5: 
+ cout << "Enter base and exponent: "; 
+cin >> a >> b; 
+ cout << "Result: " << Pow(a, b) << endl; 
+break; case 6: 
+ cout << "Exiting the program.\n"; 
+break; default: 
+ cout << "Invalid choice. Please select a number between 1 and 6.\n"; 
+break; 
+ } 
+ } while (choice != 6); // Repeat until the user chooses to exit 
+} 
+// Function to add two integers 
+int Addition(int a, int b) { 
+return a + b; 
+} 
+// Function to subtract the second integer from the first 
+int Subtraction(int a, int b) { return a - b; 
+} 
+// Function to multiply two integers 
+int Multiplication(int a, int b) { 
+return a * b; 
+} 
+// Function to divide the first integer by the second 
+double Division(int a, int b) { return 
+static_cast<double>(a) / b; 
+} 
+// Function to calculate the power of a number int 
+Pow(int number, int pow) { return 
+static_cast<int>(std::pow(number, pow)); 
+} 
+int main() { 
+ // Call the Menu function 
+Menu(); return 0; 
+}
