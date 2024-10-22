@@ -1,0 +1,252 @@
+(Question 1)
+
+Write a program in C++ that take integer type 2D array from user, calculate sum multiplication
+and average of all numbers.
+#include <iostream> 
+using namespace std; 
+int main() { int 
+rows, cols; 
+ // Input the dimensions of the 2D array 
+cout << "Enter the number of rows: "; 
+cin >> rows; 
+ cout << "Enter the number of columns: "; 
+cin >> cols; 
+ // Dynamically allocate memory for the 2D 
+array int** array = new int*[rows]; for (int i = 
+0; i < rows; ++i) { array[i] = new int[cols]; 
+ } 
+ // Input data for the 2D array 
+ cout << "Enter the elements of the " << rows << "x" << cols << " array:" << 
+endl; for (int i = 0; i < rows; ++i) { for (int j = 0; j < cols; ++j) { 
+ cout << "Element [" << i << "][" << j << "]: "; 
+cin >> array[i][j]; 
+ } 
+ } 
+ // Calculate sum, product, and average 
+int sum = 0; 
+ long long product = 1; // Use long long to handle large products 
+int totalElements = rows * cols; 
+ for (int i = 0; i < rows; ++i) { 
+for (int j = 0; j < cols; ++j) { 
+sum += array[i][j]; 
+product *= array[i][j]; 
+ } 
+ } 
+ double average = static_cast<double>(sum) / totalElements; 
+ // Display results 
+ cout << "Sum of all elements: " << sum << endl; cout 
+<< "Product of all elements: " << product << endl; cout 
+<< "Average of all elements: " << average << endl; 
+ // Free dynamically allocated memory 
+for (int i = 0; i < rows; ++i) { delete[] 
+array[i]; 
+ } 
+ delete[] array; 
+ return 0; 
+}
+
+
+(Question 2)
+
+Write a program in C++ to swap values of two variables using pointers.
+
+#include <iostream> 
+using namespace std; 
+// Function to swap values using pointers 
+void swap(int* a, int* b) { 
+ int temp = *a; // Store the value pointed to by a in temp 
+ *a = *b; // Assign the value pointed to by b to the location pointed to by a 
+ *b = temp; // Assign the value stored in temp to the location pointed to by b 
+} 
+int main() { 
+int x, y; 
+ 
+ // Input values for x and y 
+cout << "Enter the value of x: "; 
+cin >> x; 
+ cout << "Enter the value of y: "; 
+cin >> y; 
+ 
+ // Display values before swapping 
+ cout << "Before swapping: x = " << x << ", y = " << y << endl; 
+ 
+ // Call the swap function 
+swap(&x, &y); 
+ 
+ // Display values after swapping 
+ cout << "After swapping: x = " << x << ", y = " << y << endl; 
+ 
+ return 0; 
+}
+
+
+(Question 3)
+
+Write a program that lets the user to enter the 10 values into the array. The program should
+then display the largest and the smallest values stored in the array.
+
+#include <iostream> 
+using namespace std; 
+int main() { const 
+int SIZE = 10; int 
+values[SIZE]; 
+ 
+ // Input values into the array cout << 
+"Enter " << SIZE << " values:" << endl; for (int 
+i = 0; i < SIZE; ++i) { cout << "Value " << (i + 
+1) << ": "; cin >> values[i]; 
+ } 
+ 
+ // Initialize min and max with the first 
+element int min = values[0]; int max = 
+values[0]; 
+ 
+ // Find the smallest and largest values 
+for (int i = 1; i < SIZE; ++i) { if 
+(values[i] < min) { min = values[i]; 
+ } 
+ if (values[i] > max) { 
+max = values[i]; 
+ } 
+ } 
+ 
+ // Display the results 
+ cout << "The smallest value is: " << min << endl; 
+cout << "The largest value is: " << max << endl; 
+ 
+ return 0; 
+}
+
+(Question 4)
+
+Write a program that lets the user to enter the total rainfall for each of 12 months into an array
+of doubles. The program should calculate and display the total rainfall for the year, the average
+monthly rainfall and the month with the highest and lowest rainfall.
+
+#include <iostream> 
+#include <iomanip> // For std::fixed and std::setprecision 
+using namespace std; 
+int main() { const int 
+MONTHS = 12; double 
+rainfall[MONTHS]; 
+ 
+ // Input rainfall data 
+ cout << "Enter the total rainfall for each of the 12 months:" << endl; for (int i = 
+0; i < MONTHS; ++i) { 
+ cout << "Month " << (i + 1) << ": "; 
+cin >> rainfall[i]; 
+ } 
+ 
+ // Calculate total rainfall, average monthly rainfall, and find the month 
+with highest and lowest rainfall double totalRainfall = 0.0; double 
+highestRainfall = rainfall[0]; double lowestRainfall = rainfall[0]; int 
+highestMonth = 0; int lowestMonth = 0; 
+ 
+ for (int i = 0; i < MONTHS; ++i) { 
+totalRainfall += rainfall[i]; if 
+(rainfall[i] > highestRainfall) { 
+highestRainfall = rainfall[i]; 
+highestMonth = i; 
+ } 
+ if (rainfall[i] < lowestRainfall) { 
+lowestRainfall = rainfall[i]; 
+lowestMonth = i; 
+ } 
+ } 
+ 
+double averageRainfall = totalRainfall / MONTHS; 
+ 
+ // Display results 
+ cout << fixed << setprecision(2); // Set precision for floating-point output 
+cout << "Total rainfall for the year: " << totalRainfall << " inches" << endl; cout 
+<< "Average monthly rainfall: " << averageRainfall << " inches" << endl; cout << 
+"Month with highest rainfall: Month " << (highestMonth + 1) << " with " 
+<< highestRainfall << " inches" << endl; 
+ cout << "Month with lowest rainfall: Month " << (lowestMonth + 1) << " with " 
+<< lowestRainfall << " inches" << endl; 
+ 
+ return 0; 
+}
+
+(Question 5)
+
+Write a program that creates a two dimensional array initialized with test data.
+Perform the following operations on the array data.
+Get total: get total of all the elements in the array.
+Get Average: calculate the average of all the values in the array.
+Get row total: calculate the total of all the values in the specified row.
+Get column total: calculate the total of all the values in the specified column.
+Get Highest in row: find the highest value in the specified row.
+Get Highest in Column: find the highest value in the specified column.
+
+#include <iostream> 
+using namespace std; 
+const int ROWS = 3; 
+const int COLS = 4; 
+// Function to get the total of all elements in the 2D 
+array int getTotal(int array[ROWS][COLS]) { int total = 
+0; 
+for (int i = 0; i < ROWS; ++i) { 
+ for (int j = 0; j < COLS; ++j) { 
+total += array[i][j]; 
+ } 
+ } 
+ return total; 
+} 
+// Function to calculate the average of all values in the 2D 
+array double getAverage(int array[ROWS][COLS]) { int total = 
+getTotal(array); 
+ return static_cast<double>(total) / (ROWS * COLS); 
+} 
+// Function to get the total of a specified row int 
+getRowTotal(int array[ROWS][COLS], int row) { 
+int total = 0; 
+ for (int j = 0; j < COLS; ++j) { 
+total += array[row][j]; 
+ } 
+ return total; 
+} 
+// Function to get the total of a specified column 
+int getColumnTotal(int array[ROWS][COLS], int col) 
+{ int total = 0; for (int i = 0; i < ROWS; ++i) { 
+total += array[i][col]; 
+ } 
+ return total; 
+} 
+// Function to get the highest value in a specified row 
+int getHighestInRow(int array[ROWS][COLS], int row) 
+{ int highest = array[row][0]; for (int j = 1; j < 
+COLS; ++j) { if (array[row][j] > highest) { 
+highest = array[row][j]; 
+ } 
+ } 
+ return highest; 
+} 
+// Function to get the highest value in a specified 
+column int getHighestInColumn(int array[ROWS][COLS], 
+int col) { int highest = array[0][col]; for (int i = 1; i < 
+ROWS; ++i) { if (array[i][col] > highest) { 
+ highest = array[i][col]; 
+ } 
+ } 
+ return highest; 
+} 
+int main() { 
+ // Initialize a 2D array with test data 
+int array[ROWS][COLS] = { 
+ {10, 20, 30, 40}, 
+{50, 60, 70, 80}, 
+ {90, 100, 110, 120} 
+ }; 
+ // Perform operations 
+ int row = 1; // Specify row index for operations 
+int col = 2; // Specify column index for operations 
+ cout << "Total of all elements: " << getTotal(array) << endl; cout << "Average 
+of all elements: " << getAverage(array) << endl; cout << "Total of row " << row 
+<< ": " << getRowTotal(array, row) << endl; cout << "Total of column " << col << 
+": " << getColumnTotal(array, col) << endl; cout << "Highest value in row " << 
+row << ": " << getHighestInRow(array, row) << endl; 
+ cout << "Highest value in column " << col << ": " << getHighestInColumn(array, 
+col) << endl; 
+ return 0; 
+}
