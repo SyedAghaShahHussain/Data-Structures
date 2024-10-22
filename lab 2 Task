@@ -1,0 +1,127 @@
+Question 1 ) Write down a program in C++ that take an age of 10 students as an input from user and
+display the largest age of the student from an array.
+
+#include <iostream>
+using namespace std;
+int main() {
+ const int numStudents = 10;
+ int ages[numStudents];
+ 
+ // Input ages from the user
+ cout << "Enter the ages of " << numStudents << " students:\n";
+ for (int i = 0; i < numStudents; i++) {
+ cout << "Enter age of student " << i + 1 << ": ";
+ cin >> ages[i];
+ }
+ 
+ // Initialize largest with the first age
+ int largestAge = ages[0];
+ 
+ // Find the largest age
+ for (int i = 1; i < numStudents; i++) {
+ if (ages[i] > largestAge) {
+ largestAge = ages[i];
+ }
+ }
+ 
+ // Display the largest age
+ cout << "The largest age is: " << largestAge << endl;
+ return 0;
+}
+
+
+
+(Question 2 )
+
+Write down a program in C++ that take an input data from user in three different arrays
+and then add the arrays and store them in another array. (Through Dynamic array
+concept).
+
+#include <iostream>
+using namespace std;
+int main() {
+ int n;
+ // Get the size of the arrays from the user
+ cout << "Enter the size of the arrays: ";
+ cin >> n;
+ // Dynamically allocate memory for three arrays
+ int *arr1 = new int[n]; //This pointer will store the address of the first 
+element of a dynamically allocated array.
+ int *arr2 = new int[n];
+ int *arr3 = new int[n];
+ int *result = new int[n]; // To store the result
+ // Input values for the first array
+ cout << "Enter value for the first array:\n";
+ for (int i = 0; i < n; i++) {
+ cout << "value " << i + 1 << ": ";
+ cin >> arr1[i];
+ }
+ // Input values for the second array
+ cout << "Enter values for the second array:\n";
+ for (int i = 0; i < n; i++) {
+ cout << "value " << i + 1 << ": ";
+ cin >> arr2[i];
+ }
+ // Input values for the third array
+ cout << "Enter values for the third array:\n";
+ for (int i = 0; i < n; i++) {
+ cout << "value " << i + 1 << ": ";
+ cin >> arr3[i];
+ }
+ // Add the arrays element-wise and store in the result array
+ for (int i = 0; i < n; i++) {
+ result[i] = arr1[i] + arr2[i] + arr3[i];
+ }
+ // Display the result array
+ cout << "\nThe result of adding the arrays is:\n";
+ for (int i = 0; i < n; i++) {
+ cout << "value " << i + 1 << ": " << result[i] << endl;
+ }
+ 
+ delete[] arr1; //for dellocate the dynamically allocated arry
+ delete[] arr2;
+ delete[] arr3;
+ delete[] result;
+ return 0;
+}
+
+(Question 3)
+
+Write a program for linear search using the concept of dynamic array (Note: Program
+should handle the situation if item is not in the list).
+
+#include <iostream>
+using namespace std;
+int main() {
+ int n, item, foundIndex = -1;
+ // Get the size of the array from the user
+ cout << "Enter the size of the array: ";
+ cin >> n;
+ // Dynamically allocate memory for the array
+ int *arr = new int[n];
+ // Input values for the array
+ cout << "Enter " << n << " elements of the array:\n";
+ for (int i = 0; i < n; i++) {
+ cout << "Element " << i + 1 << ": ";
+ cin >> arr[i];
+ }
+ // Input the item to search for
+ cout << "Enter the item to search for: ";
+ cin >> item;
+ // Perform linear search
+ for (int i = 0; i < n; i++) {
+ if (arr[i] == item) {
+ foundIndex = i;
+ break; // Exit the loop once the item is found
+ }
+ }
+ // Check if the item was found
+ if (foundIndex != -1) {
+ cout << "Item found at index: " << foundIndex << endl;
+ } else {
+ cout << "Item not found in the list." << endl;
+ }
+ // Deallocate the dynamically allocated memory
+ delete[] arr;
+ return 0;
+}
